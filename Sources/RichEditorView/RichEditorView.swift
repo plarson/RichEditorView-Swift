@@ -40,10 +40,12 @@ import WebKit
 private let DefaultInnerLineHeight: Int = 28
 
 public class RichEditorWebView: WKWebView {
+#if !os(visionOS)
     public var accessoryView: UIView?
     public override var inputAccessoryView: UIView? {
         return accessoryView
     }
+#endif
 }
 
 /// RichEditorView is a UIView that displays richly styled text, and allows it to be edited in a WYSIWYG fashion.
@@ -51,13 +53,15 @@ public class RichEditorWebView: WKWebView {
     /// The delegate that will receive callbacks when certain actions are completed.
     open weak var delegate: RichEditorDelegate?
     
+#if !os(visionOS)
     /// Input accessory view to display over they keyboard.
     /// Defaults to nil
     open override var inputAccessoryView: UIView? {
         get { return webView.accessoryView }
         set { webView.accessoryView = newValue }
     }
-    
+#endif
+
     /// The internal WKWebView that is used to display the text.
     open private(set) var webView: RichEditorWebView
     
