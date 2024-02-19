@@ -57,7 +57,7 @@ div {
     content: attr(placeholder);
     position: absolute;
     top: 0px;
-    color: #cccccc;
+    color: #59595e;
 }
 
 #editor {
